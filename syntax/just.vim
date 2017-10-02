@@ -3,11 +3,11 @@ if exists('b:current_syntax')
   finish
 endif
 
-syntax region justCommand start=' ( *)' end='\v$' contains='variable'
+syntax region justCommand start='^( ( *))' end='$' contains='justVarLocal'
 
 syn match specialChar '@'
 
-syntax region justLabel start='[A-Za-z]' end='\v:$' contains=justVarName
+syntax region justLabel start='[A-Za-z]' end=':$' contains=justVarName
 
 syntax region justVarLocal start='{{' end='}}' contains=justVarName
 
