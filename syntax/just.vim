@@ -3,7 +3,7 @@ if exists('b:current_syntax')
   finish
 endif
 
-syntax region justCommand start='^( ( *))' end='$' contains=justVarLocal
+syntax region justCommand start='^( *)' end='$' contains=justVarLocal
 
 syn match specialChar '@'
 
