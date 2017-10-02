@@ -3,7 +3,7 @@ if exists('b:current_syntax')
   finish
 endif
 
-syntax region justCommand start='\v^( ( *))' end='\v$' contains=justVarLocal
+syntax region justCommand start='\v^( ( *))' end='\v$' contains=justVarLocal,specialChar
 
 syn match specialChar '@'
 
@@ -20,7 +20,8 @@ syntax match justComment '\v^#.*$'
 hi def link specialChar Special
 hi def link justComment Comment
 hi def link justCommand String
-hi def link justLabel Special
-hi def link justVarLocal Special
+hi def link justLabel Keyword
+hi def link justVarLocal Identifier
+hi def link justVarName Identifier
 
 let b:current_syntax = 'just'
