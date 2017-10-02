@@ -7,7 +7,7 @@ syntax region justCommand start=' ( *)' end='$' contains='variable'
 
 syn match specialChar '@'
 
-syntax region justLabel start='[A-Za-z]' end='(:| )' contains=justVarName
+syntax region justLabel start='[A-Za-z]' end=':$' contains=justVarName
 
 syntax region justVarLocal start='{{' end='}}' contains=justVarName
 
