@@ -18,30 +18,21 @@ syn match makeStatement	"^ *vpath"
 " catch unmatched define/endef keywords.  endef only matches it is by itself on a line, possibly followed by a commend
 syn region makeDefine start="^\s*define\s" end="^\s*endef\s*\(#.*\)\?$" contains=makeStatement,makeIdent,makePreCondit,makeDefine
 
-" Microsoft Makefile specials
-syn case ignore
-syn match makePreCondit "! *\(cmdswitches\|error\|message\|include\|if\|ifdef\|ifndef\|else\|elseif\|else if\|else\s*ifdef\|else\s*ifndef\|endif\|undef\)\>"
-syn case match
-
 " identifiers
 syn region makeIdent	start="\$(" skip="\\)\|\\\\" end=")" contains=makeStatement,makeIdent,makeSString,makeDString
 syn region makeIdent	start="\${" skip="\\}\|\\\\" end="}" contains=makeStatement,makeIdent,makeSString,makeDString
 syn match makeIdent	"\$\$\w*"
 syn match makeIdent	"\$[^({]"
-syn match makeIdent	"^ *[^:#= ( *)]*\s*[:+?!*]="me=e-2
-syn match makeIdent	"^ *[^:#= ( *)]*\s*="me=e-1
 syn match makeIdent	"%"
 
 " Makefile.in variables
 syn match makeConfig "@[A-Za-z0-9_]\+@"
 
 " make targets
-" syn match makeSpecTarget	"^\.\(SUFFIXES\|PHONY\|DEFAULT\|PRECIOUS\|IGNORE\|SILENT\|EXPORT_ALL_VARIABLES\|KEEP_STATE\|LIBPATTERNS\|NOTPARALLEL\|DELETE_ON_ERROR\|INTERMEDIATE\|POSIX\|SECONDARY\)\>"
 syn match makeImplicit		"^\.[A-Za-z0-9_./( *) -]\+\s*:$"me=e-1 nextgroup=makeSource
 syn match makeImplicit		"^\.[A-Za-z0-9_./( *) -]\+\s*:[^=]"me=e-2 nextgroup=makeSource
 
 syn region makeTarget   transparent matchgroup=makeTarget start="^[~A-Za-z0-9_./$()%-][A-Za-z0-9_./( *) $()%-]*:\{1,2}[^:=]"rs=e-1 end=";"re=e-1,me=e-1 end="[^\\]$" keepend contains=makeIdent,makeSpecTarget,makeNextLine,makeComment skipnl nextGroup=makeCommands
-syn match makeTarget		"^[~A-Za-z0-9_./$()%*@-][A-Za-z0-9_./( *) $()%*@-]*::\=\s*$" contains=makeIdent,makeSpecTarget,makeComment skipnl nextgroup=makeCommands,makeCommandError
 
 syn region makeSpecTarget	transparent matchgroup=makeSpecTarget start="^\.\(SUFFIXES\|PHONY\|DEFAULT\|PRECIOUS\|IGNORE\|SILENT\|EXPORT_ALL_VARIABLES\|KEEP_STATE\|LIBPATTERNS\|NOTPARALLEL\|DELETE_ON_ERROR\|INTERMEDIATE\|POSIX\|SECONDARY\)\>\s*:\{1,2}[^:=]"rs=e-1 end="[^\\]$" keepend contains=makeIdent,makeSpecTarget,makeNextLine,makeComment skipnl nextGroup=makeCommands
 syn match makeSpecTarget		"^\.\(SUFFIXES\|PHONY\|DEFAULT\|PRECIOUS\|IGNORE\|SILENT\|EXPORT_ALL_VARIABLES\|KEEP_STATE\|LIBPATTERNS\|NOTPARALLEL\|DELETE_ON_ERROR\|INTERMEDIATE\|POSIX\|SECONDARY\)\>\s*::\=\s*$" contains=makeIdent,makeComment skipnl nextgroup=makeCommands,makeCommandError
