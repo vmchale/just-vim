@@ -20,6 +20,7 @@ syntax match justComment '\v^#.*$'
 hi def link specialChar Special
 hi def link justComment Comment
 hi def link justCommand String
-hi def link justLabel Identifier
+hi def link justLabel Keyword
+hi def link justVarLocal Identifier
 
 let b:current_syntax = 'just'
