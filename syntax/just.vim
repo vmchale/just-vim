@@ -7,11 +7,11 @@ syntax region justCommand start=' ( *)' end='$' contains='variable'
 
 syn match specialChar '@'
 
-syntax region justLabel start='[A-Za-z]' end='(:| )' contains=
+syntax region justLabel start='[A-Za-z]' end='(:| )' contains=justVarName
 
-syntax region justVarLocal start='{{' end='}}' contains=justVariable
+syntax region justVarLocal start='{{' end='}}' contains=justVarName
 
-syntax match justVariable '\v[A-Z]'
+syntax match justVarName '\v[A-Z]'
 syntax match justComment '\v^#.*$'
 
 " Define the default highlighting.
