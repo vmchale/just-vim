@@ -5,7 +5,7 @@ endif
 
 syntax region justCommand start='\v^( ( *))' end='\v$' contains=justVarLocal,specialChar
 
-syn match specialChar '\v[^\\]@'
+syn match specialChar '\v[^\\]\@'
 
 " TODO
 " make something like
