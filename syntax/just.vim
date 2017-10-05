@@ -5,7 +5,13 @@ endif
 
 syntax region justCommand start='\v^( ( *))' end='\v$' contains=justVarLocal,specialChar
 
-syn match specialChar '@'
+syn match specialChar '\v[^\\]@'
+
+" TODO
+" make something like
+" build: test VARIABLE
+"
+" obviously an error
 
 syntax region justLabel start='\v[A-Za-z]' end='\v(:|$)' contains=justVarName
 
