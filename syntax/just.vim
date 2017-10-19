@@ -18,7 +18,7 @@ syntax region justLabel start='\v[A-Za-z]' end='\v(:|$)' contains=justVarName
 syntax region justVarLocal start='{{' end='}}' contains=justVarName
 
 syntax match justVarName '\v[A-Z]'
-syntax match justComment '\v^#.*$'
+syntax match justComment '\v^#.*$' contains=@Spell
 
 " Define the default highlighting.
 " Only when an item doesn't have highlighting yet
